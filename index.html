@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets-extra/css/styletime.css">
+    <link rel="icon" type="image/x-icon" href="assets/AI.svg"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'primary': '#050816',
+              'primary-dark': '#030612',
+              'secondary': '#8b6533',
+              'accent': '#b8802e',
+              'electric': '#d4a649',
+              'navy': '#1E293B',
+              'midnight': '#0F172A',
+              'slate': '#334155',
+              'azure': '#0EA5E9'
+            },
+            fontFamily: {
+              'poppins': ['Poppins', 'sans-serif']
+            },
+            animation: {
+              'rotate360': 'rotate360 20s linear infinite',
+              'bounce-y': 'bounce-y 3s ease-in-out infinite alternate',
+              'shine': 'shine 800ms ease-out',
+              'glow': 'glow 2s ease-in-out infinite alternate',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-gold': 'pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in': 'fadeIn 1s ease-out',
+              'slide-up': 'slideUp 0.8s ease-out 0.3s both'
+            },
+            keyframes: {
+              rotate360: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' }
+              },
+              'bounce-y': {
+                '0%': { transform: 'translateY(0)' },
+                '100%': { transform: 'translateY(-15px)' }
+              },
+              shine: {
+                '0%': { left: '-100%', opacity: '0' },
+                '50%': { opacity: '1' },
+                '100%': { left: '100%', opacity: '0' }
+              },
+              glow: {
+                '0%': { boxShadow: '0 0 20px rgba(139, 101, 51, 0.5)' },
+                '100%': { boxShadow: '0 0 30px rgba(212, 166, 73, 0.8)' }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' }
+              },
+              'pulse-gold': {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0.7' }
+              },
+              fadeIn: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              },
+              slideUp: {
+                '0%': { opacity: '0', transform: 'translateY(30px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              }
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+              'ai-cosmic': 'linear-gradient(135deg, #050816 0%, #8b6533 50%, #050816 100%)'
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+      
+      body {
+        background: linear-gradient(135deg, #050816 0%, #0a0a0a 25%, #8b6533 50%, #0a0a0a 75%, #050816 100%);
+        background-attachment: fixed;
+        background-size: 400% 400%;
+        animation: gradientShift 12s ease infinite;
+      }
+      
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .btn-shine {
+        background: linear-gradient(45deg, #8b6533, #b8802e, #d4a649);
+        border: 1px solid rgba(212, 166, 73, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .btn-shine:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(120deg, transparent, rgba(212, 166, 73, 0.6), transparent);
+        transition: all 800ms ease;
+      }
+      
+      .btn-shine:hover:before {
+        left: 100%;
+      }
+      
+      .btn-shine:hover {
+        background: linear-gradient(45deg, #b8802e, #d4a649, #f4c764);
+        box-shadow: 0 0 30px rgba(139, 101, 51, 0.5);
+        transform: translateY(-2px);
+      }
+      
+      .swiper-slide-active .gallery__thumbnail {
+        transform: translateY(-1.25rem) scale(1.2);
+        box-shadow: 0 10px 30px rgba(139, 101, 51, 0.4);
+      }
+      
+      .swiper-slide-next .gallery__thumbnail {
+        transform: rotate(15deg);
+        box-shadow: 0 5px 20px rgba(139, 101, 51, 0.2);
+      }
+      
+      .swiper-slide-prev .gallery__thumbnail {
+        transform: rotate(-15deg);
+        box-shadow: 0 5px 20px rgba(139, 101, 51, 0.2);
+      }
+      
+      .glass-effect {
+        background: rgba(5, 8, 22, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(139, 101, 51, 0.2);
+      }
+      
+      /* Automotive theme glass effect override */
+      .automotive-theme .glass-effect {
+        background: rgba(var(--theme-primary), 0.8) !important;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(var(--theme-secondary), 0.2) !important;
+      }
+      
+      .glow-text {
+        text-shadow: 0 0 20px rgba(139, 101, 51, 0.5);
+      }
+      
+      /* Automotive theme glow text override */
+      .automotive-theme .glow-text {
+        text-shadow: 0 0 20px rgba(var(--theme-secondary), 0.5) !important;
+      }
+      
+      .timeline-glow {
+        box-shadow: 0 0 20px rgba(139, 101, 51, 0.3);
+      }
+      
+      /* Automotive Theme CSS Variables */
+      :root {
+        /* AI Theme Colors (default) */
+        --theme-primary: 5, 8, 22;          /* #050816 */
+        --theme-primary-dark: 3, 6, 18;     /* #030612 */
+        --theme-secondary: 139, 101, 51;    /* #8b6533 */
+        --theme-accent: 184, 128, 46;       /* #b8802e */
+        --theme-electric: 212, 166, 73;     /* #d4a649 */
+      }
+      
+      /* Automotive Theme Colors */
+      .automotive-theme {
+        --theme-primary: 15, 23, 42;        /* #0f172a (slate-900) */
+        --theme-primary-dark: 2, 6, 23;     /* #020617 (slate-950) */
+        --theme-secondary: 249, 115, 22;    /* #f97316 (orange-500) */
+        --theme-accent: 251, 146, 60;       /* #fb923c (orange-400) */
+        --theme-electric: 254, 215, 170;    /* #fed7aa (orange-200) */
+      }
+      
+      /* Glow effect for automotive theme cards */
+      .automotive-theme .glow-3d {
+        box-shadow: 
+          0 0 20px rgba(var(--theme-secondary), 0.3),
+          0 0 60px rgba(var(--theme-secondary), 0.1),
+          inset 0 0 20px rgba(var(--theme-secondary), 0.1);
+      }
+      
+      /* Hover effects for automotive theme glow */
+      .automotive-theme .roadmap-item:hover .glow-3d {
+        box-shadow: 
+          0 0 30px rgba(var(--theme-secondary), 0.5),
+          0 0 80px rgba(var(--theme-secondary), 0.2),
+          inset 0 0 30px rgba(var(--theme-secondary), 0.15);
+      }
+      
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
+      
+      html {
+        scrollbar-width: none;
+      }
+      
+      body {
+        -ms-overflow-style: none;
+      }
+      
+      .product-card {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+      }
+      
+      .product-card:hover {
+        transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+      }
+      
+      .product-inner {
+        transform-style: preserve-3d;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+      }
+      
+      .product-card:hover .product-inner {
+        transform: translateZ(30px);
+      }
+      
+      .product-icon {
+        transform: translateZ(50px);
+        transition: all 0.4s ease;
+      }
+      
+      .product-card:hover .product-icon {
+        transform: translateZ(80px) rotateY(10deg);
+      }
+      
+      .product-content {
+        transform: translateZ(20px);
+      }
+      
+      @keyframes float3d {
+        0%, 100% { 
+          transform: translateZ(0px) rotateX(0deg);
+        }
+        50% { 
+          transform: translateZ(20px) rotateX(5deg);
+        }
+      }
+      
+      .float-3d {
+        animation: float3d 4s ease-in-out infinite;
+      }
+      
+      .glow-3d {
+        box-shadow: 
+          0 0 20px rgba(139, 101, 51, 0.3),
+          0 0 60px rgba(139, 101, 51, 0.1),
+          inset 0 0 20px rgba(139, 101, 51, 0.1);
+      }
+      
+      .product-card:hover .glow-3d {
+        box-shadow: 
+          0 0 30px rgba(139, 101, 51, 0.5),
+          0 0 80px rgba(139, 101, 51, 0.2),
+          inset 0 0 30px rgba(139, 101, 51, 0.15);
+      }
+      
+      /* Timeline CSS overrides for AI theme */
+      .cd-timeline {
+        background: transparent !important;
+        color: #E2E8F0 !important;
+      }
+      
+      .cd-timeline__container::before {
+        background: linear-gradient(to bottom, #8b6533, #b8802e, #8b6533) !important;
+        width: 6px !important;
+        box-shadow: 0 0 15px rgba(139, 101, 51, 0.4);
+      }
+      
+      .cd-timeline__img {
+        box-shadow: 0 0 0 6px rgba(139, 101, 51, 0.2), inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05) !important;
+      }
+      
+      .cd-timeline__content {
+        box-shadow: 0 8px 25px rgba(139, 101, 51, 0.15) !important;
+      }
+      
+      .cd-timeline__content::before {
+        border-right-color: rgba(5, 8, 22, 0.9) !important;
+      }
+      
+      @media (min-width: 64rem) {
+        .cd-timeline__block:nth-child(odd) .cd-timeline__content::before {
+          border-left-color: rgba(5, 8, 22, 0.9) !important;
+          border-right-color: transparent !important;
+        }
+      }
+      
+      .cd-timeline__date {
+        color: #d4a649 !important;
+        font-weight: 500 !important;
+      }
+      
+      /* Enhanced Roadmap Styling with AI Theme */
+      .ai-theme {
+        --theme-primary: 5, 8, 22;          /* #050816 */
+        --theme-primary-dark: 3, 6, 18;     /* #030612 */
+        --theme-secondary: 139, 101, 51;    /* #8b6533 */
+        --theme-accent: 184, 128, 46;       /* #b8802e */
+        --theme-electric: 212, 166, 73;     /* #d4a649 */
+      }
+      
+      /* Enhanced glass effect for roadmap cards */
+      .ai-theme .glass-effect {
+        background: rgba(5, 8, 22, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(139, 101, 51, 0.2);
+      }
+      
+      /* Enhanced glow effect for 3D cards */
+      .ai-theme .glow-3d {
+        box-shadow: 
+          0 0 20px rgba(139, 101, 51, 0.3),
+          0 0 60px rgba(139, 101, 51, 0.1),
+          inset 0 0 20px rgba(139, 101, 51, 0.1);
+      }
+      
+      /* Enhanced hover effects for glow */
+      .ai-theme .roadmap-item:hover .glow-3d {
+        box-shadow: 
+          0 0 30px rgba(139, 101, 51, 0.5),
+          0 0 80px rgba(139, 101, 51, 0.2),
+          inset 0 0 30px rgba(139, 101, 51, 0.15);
+      }
+      
+      /* Enhanced hover effects for roadmap items */
+      .ai-theme .roadmap-item .glass-effect {
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      
+      .ai-theme .roadmap-item:hover .glass-effect {
+        border-color: rgba(184, 128, 46, 0.4) !important;
+        background: rgba(5, 8, 22, 0.9) !important;
+        transform: translateY(-8px) scale(1.02) !important;
+        box-shadow: 
+          0 0 25px rgba(139, 101, 51, 0.4),
+          0 15px 35px rgba(139, 101, 51, 0.2),
+          inset 0 0 25px rgba(139, 101, 51, 0.1) !important;
+      }
+      
+      /* Enhanced roadmap ball styling */
+      .ai-theme #roadmap-ball {
+        filter: drop-shadow(0 0 15px rgba(184, 128, 46, 0.6));
+        animation: roadmapPulse 2s ease-in-out infinite;
+      }
+      
+      @keyframes roadmapPulse {
+        0%, 100% {
+          transform: scale(1);
+          filter: drop-shadow(0 0 15px rgba(184, 128, 46, 0.6));
+        }
+        50% {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 25px rgba(212, 166, 73, 0.8));
+        }
+      }
+      
+      /* Enhanced phase status badges */
+      .ai-theme .roadmap-item [style*="background: rgba(139, 101, 51, 0.2)"] {
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(139, 101, 51, 0.2);
+        transition: all 0.3s ease;
+      }
+      
+      .ai-theme .roadmap-item:hover [style*="background: rgba(139, 101, 51, 0.2)"] {
+        background: rgba(184, 128, 46, 0.3) !important;
+        box-shadow: 0 6px 20px rgba(184, 128, 46, 0.3);
+        transform: scale(1.05);
+      }
+      
+      /* Enhanced icon animations */
+      .ai-theme .roadmap-item .w-12.h-12 {
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      
+      .ai-theme .roadmap-item:hover .w-12.h-12 {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 8px 25px rgba(139, 101, 51, 0.4);
+      }
+      
+      /* Enhanced side icons */
+      .ai-theme .roadmap-item .w-16.h-16 {
+        transition: all 0.4s ease;
+      }
+      
+      .ai-theme .roadmap-item:hover .w-16.h-16 {
+        transform: scale(1.15);
+        filter: brightness(1.2);
+      }
+      
+      /* Automotive Theme Hero Section Styling */
+      .automotive-theme .hero-bg {
+        background: linear-gradient(135deg, #0f172a 0%, #020617 25%, #f97316 50%, #020617 75%, #0f172a 100%) !important;
+      }
+      
+      .automotive-theme .hero-floating-orb-1 {
+        background: rgba(249, 115, 22, 0.15) !important;
+      }
+      
+      .automotive-theme .hero-floating-orb-2 {
+        background: rgba(251, 146, 60, 0.15) !important;
+      }
+      
+      /* Automotive theme button styling */
+      .automotive-theme .btn-shine {
+        background: linear-gradient(45deg, #f97316, #fb923c, #fed7aa) !important;
+        border: 1px solid rgba(249, 115, 22, 0.3) !important;
+      }
+      
+      .automotive-theme .btn-shine:before {
+        background: linear-gradient(120deg, transparent, rgba(249, 115, 22, 0.6), transparent) !important;
+      }
+      
+      .automotive-theme .btn-shine:hover {
+        background: linear-gradient(45deg, #fb923c, #fed7aa, #ffedd5) !important;
+        box-shadow: 0 0 30px rgba(249, 115, 22, 0.5) !important;
+      }
+      
+      /* Automotive theme hero image glow */
+      .hero-image-glow {
+        background: linear-gradient(to right, #8b6533, #b8802e, #d4a649);
+      }
+      
+      .automotive-theme .hero-image-glow {
+        background: linear-gradient(to right, rgba(var(--theme-secondary), 1), rgba(var(--theme-accent), 1), rgba(var(--theme-electric), 1)) !important;
+      }
+      
+      /* Responsive enhancements for mobile */
+      @media (max-width: 768px) {
+        .ai-theme #roadmap-ball {
+          left: 2rem;
+        }
+        
+        .ai-theme .roadmap-item:hover .glass-effect {
+          transform: translateY(-4px) scale(1.01) !important;
+        }
+      }
+      
+      /* Enhanced Gallery Styles */
+      .gallery {
+        height: auto;
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        padding: 2rem 0;
+      }
+
+      .gallery__card {
+        position: relative;
+        width: 280px;
+        height: 360px;
+        border-radius: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gallery__card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(139, 101, 51, 0.4);
+      }
+
+      .gallery__img, 
+      .gallery__card::after, 
+      .gallery__data {
+        position: absolute;
+      }
+
+      .gallery__img {
+        inset: 0;
+        margin: auto;
+        transition: transform .3s;
+      }
+
+      .gallery__card::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg,
+                    hsla(0, 0%, 100%, 0) 32%,
+                    hsla(0, 0%, 0%, .3) 100%);
+        top: 0;
+        z-index: 1;
+      }
+
+      .gallery__data {
+        bottom: 1.5rem;
+        left: 1.75rem;
+        z-index: 10;
+      }
+
+      .gallery__title, 
+      .gallery__subtitle {
+        color: #fff;
+        font-weight: 500;
+      }
+
+      .gallery__title {
+        font-size: 1rem;
+      }
+
+      .gallery__subtitle {
+        font-size: 0.75rem;
+      }
+
+      .gallery__overflow {
+        position: relative;
+      }
+
+      .gallery__thumbnail {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        cursor: pointer;
+        margin-left: auto;
+        margin-right: auto;
+        transition: transform .3s;
+      }
+
+      .gallery__thumbnail-img {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+      }
+
+      /* Swiper class */
+      .gallery-cards,
+      .gallery-thumbs {
+        width: 260px;
+      }
+
+      .gallery-cards:hover .gallery__img {
+        transform: scale(1.1);
+      }
+
+      .gallery .swiper-wrapper {
+        padding: 2.5rem 0;
+      }
+
+      .gallery-thumbs {
+        height: 132px;
+      }
+
+      /* Active thumbnail */
+      .swiper-slide-active .gallery__thumbnail {
+        transform: translateY(-1.25rem) scale(1.2);
+        box-shadow: 0 10px 30px rgba(139, 101, 51, 0.4);
+      }
+
+      /* Rotate thumbnail */
+      .swiper-slide-next .gallery__thumbnail {
+        transform: rotate(15deg);
+        box-shadow: 0 5px 20px rgba(139, 101, 51, 0.2);
+      }
+
+      .swiper-slide-prev .gallery__thumbnail {
+        transform: rotate(-15deg);
+        box-shadow: 0 5px 20px rgba(139, 101, 51, 0.2);
+      }
+
+      /* Sliding numbers */
+      .swiper-pagination-fraction {
+        font-size: 0.813rem;
+        letter-spacing: -1px;
+        font-weight: 500;
+        color: #d4a649;
+        bottom: 0;
+      }
+
+      /* Arrow buttons */
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        content: '';
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        font-size: 1.5rem;
+        color: #d4a649;
+        top: 5.5rem;
+      }
+
+      .swiper-button-next {
+        right: -1.5rem;
+        transform: rotate(15deg);
+      }
+
+      .swiper-button-prev {
+        left: -1.5rem;
+        transform: rotate(-15deg);
+      }
+
+      /* Other swiper settings */
+      .gallery-cards::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+      }
+
+      .swiper-horizontal.swiper-css-mode > .swiper-wrapper {
+        scroll-snap-type: initial;
+      }
+
+      /* Gallery Section Responsive Improvements */
+      .gallery-section {
+        overflow: hidden;
+      }
+
+      @media screen and (max-width: 768px) {
+        .gallery-section .max-w-7xl {
+          padding: 0 1rem;
+        }
+        
+        .gallery-section h2 {
+          font-size: 2rem !important;
+        }
+        
+        .gallery-section p {
+          font-size: 1rem !important;
+        }
+      }
+
+      /* Responsive gallery breakpoints */
+      @media screen and (max-width: 320px) {
+        .gallery__card {
+          width: 240px;
+          height: 300px;
+        }
+        .gallery-cards,
+        .gallery-thumbs {
+          width: 260px;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .gallery {
+          padding: 1rem 0;
+        }
+        
+        .gallery__card {
+          width: 260px;
+          height: 320px;
+          border-radius: 1.5rem;
+        }
+        
+        .gallery-cards,
+        .gallery-thumbs {
+          width: 280px;
+        }
+        
+        .gallery__thumbnail {
+          width: 50px;
+          height: 50px;
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 481px) and (max-width: 768px) {
+        .gallery__card {
+          width: 300px;
+          height: 380px;
+        }
+        
+        .gallery-cards,
+        .gallery-thumbs {
+          width: 320px;
+        }
+      }
+
+      @media screen and (min-width: 769px) and (max-width: 1023px) {
+        .gallery__card {
+          width: 320px;
+          height: 400px;
+        }
+        
+        .gallery-cards,
+        .gallery-thumbs {
+          width: 340px;
+        }
+        
+        .gallery__thumbnail {
+          width: 70px;
+          height: 70px;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        .gallery__card {
+          width: 350px;
+          height: 450px;
+        }
+        
+        .gallery__thumbnail {
+          width: 80px;
+          height: 80px;
+        }
+        
+        .gallery-cards,
+        .gallery-thumbs {
+          width: 370px;
+        }
+      }
+      
+      /*=============== MODERN AI GALLERY (Automotive Style) ===============*/
+
+      /* Gallery Container */
+      .gallery-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Main Gallery Swiper */
+      .gallery-main {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .gallery-main .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .gallery-card {
+        position: relative;
+        width: 350px;
+        height: 450px;
+        border-radius: 24px;
+        overflow: hidden;
+        background: linear-gradient(145deg, rgba(5, 8, 22, 0.9), rgba(139, 101, 51, 0.1));
+        border: 2px solid rgba(139, 101, 51, 0.2);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 50px rgba(139, 101, 51, 0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        backdrop-filter: blur(15px);
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 24px;
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 2;
+      }
+
+      .gallery-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .gallery-subtitle {
+        font-size: 0.9rem;
+        color: rgba(212, 166, 73, 0.9);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Thumbnail Gallery */
+      .gallery-thumbs-container {
+        margin-top: 32px;
+        position: relative;
+      }
+
+      .gallery-thumbs {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        height: 120px;
+      }
+
+      .gallery-thumbs .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .thumb-card {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        overflow: hidden;
+        background: linear-gradient(145deg, rgba(5, 8, 22, 0.7), rgba(139, 101, 51, 0.1));
+        border: 2px solid rgba(139, 101, 51, 0.3);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+        position: relative;
+      }
+
+      .thumb-card:hover {
+        transform: translateY(-5px) scale(1.1);
+        border-color: rgba(139, 101, 51, 0.8);
+        box-shadow: 0 10px 30px rgba(139, 101, 51, 0.3);
+      }
+
+      .thumb-card.swiper-slide-thumb-active {
+        transform: translateY(-8px) scale(1.2);
+        border-color: rgba(139, 101, 51, 1);
+        box-shadow: 0 15px 40px rgba(139, 101, 51, 0.5);
+      }
+
+      .thumb-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+      }
+
+      .thumb-card:hover .thumb-image {
+        transform: scale(1.1);
+      }
+
+      /* Gallery Controls (Pagination + Navigation) */
+      .gallery-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 24px;
+      }
+
+      .gallery-btn-prev,
+      .gallery-btn-next {
+        background: none;
+        border: none;
+        color: #d4a649;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 2px 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        min-width: 28px;
+        height: 28px;
+      }
+
+      .gallery-btn-prev:hover,
+      .gallery-btn-next:hover {
+        color: #ffffff;
+        background: rgba(139, 101, 51, 0.2);
+        transform: scale(1.1);
+      }
+
+      .gallery-btn-prev:active,
+      .gallery-btn-next:active {
+        transform: scale(0.95);
+      }
+
+      /* Pagination */
+      .gallery-pagination {
+        text-align: center;
+        min-width: 50px;
+      }
+
+      .gallery-pagination .swiper-pagination-fraction {
+        color: rgba(212, 166, 73, 0.9);
+        font-weight: 600;
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin: 0;
+        display: inline-block;
+      }
+
+      /* Responsive Design for AI Gallery */
+      @media screen and (max-width: 768px) {
+        .gallery-card {
+          width: 300px;
+          height: 380px;
+        }
+        
+        .thumb-card {
+          width: 60px;
+          height: 60px;
+        }
+        
+        .gallery-btn-prev,
+        .gallery-btn-next {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .gallery-card {
+          width: 280px;
+          height: 350px;
+          border-radius: 20px;
+        }
+        
+        .thumb-card {
+          width: 50px;
+          height: 50px;
+          border-radius: 12px;
+        }
+        
+        .gallery-title {
+          font-size: 1.25rem;
+        }
+        
+        .gallery-subtitle {
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+    <title>Bock AI</title>
+  </head>
+  <body class="font-poppins overflow-x-hidden">
+    <!-- Enhanced Navigation (Responsive) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-primary/80 backdrop-blur-xl border-b border-accent/20">
+      <div class="max-w-7xl mx-auto px-4 py-3">
+        <div class="flex items-center justify-between h-16">
+          <!-- Logo and Title -->
+          <div class="flex items-center gap-3">
+            <div class="relative flex-shrink-0">
+              <img src="assets/AI.svg" alt="Bock AI" class="w-10 h-10 filter drop-shadow-lg">
+              <div class="absolute -inset-1 bg-gradient-to-r from-accent to-electric rounded-full opacity-30 blur-sm"></div>
+            </div>
+            <span class="text-xl font-bold text-white whitespace-nowrap">Bock AI</span>
+          </div>
+          <!-- Hamburger for mobile -->
+          <button id="nav-toggle" class="lg:hidden block text-white focus:outline-none p-2 rounded-md hover:bg-accent/20 transition" aria-label="Open menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <!-- Desktop Nav -->
+          <div id="nav-menu" class="hidden lg:flex flex-row items-center gap-6">
+            <a href="#products" class="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-2 py-1 rounded">Products</a>
+            <a href="#work" class="text-gray-300 hover:text-white transition-colors duration-200 text-sm font-medium px-2 py-1 rounded">Work at Bock</a>
+            <a href="https://bockbharath.com/" class="bg-gradient-to-r from-secondary to-accent px-4 py-2 rounded-lg text-white text-sm font-medium hover:shadow-lg hover:shadow-accent/25 transition-all duration-300">Back to Bock</a>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Nav Overlay -->
+      <div id="nav-backdrop" class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity duration-300"></div>
+      <div id="nav-mobile-menu" class="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-xl border-b border-accent/20 shadow-lg px-6 py-6 flex flex-col gap-4 items-center w-full transition-transform duration-300 -translate-y-full lg:hidden">
+        <a href="#products" class="block w-full text-center text-gray-300 hover:text-white transition-colors duration-200 text-base font-medium py-3">Products</a>
+        <div class="border-t border-accent/20 w-full"></div>
+        <a href="#work" class="block w-full text-center text-gray-300 hover:text-white transition-colors duration-200 text-base font-medium py-3">Work at Bock</a>
+        <div class="border-t border-accent/20 w-full"></div>
+        <a href="https://bockbharath.com/" class="block w-full text-center bg-gradient-to-r from-secondary to-accent px-4 py-3 rounded-lg text-white text-base font-medium hover:shadow-lg hover:shadow-accent/25 transition-all duration-300">Back to Bock</a>
+      </div>
+    </nav>
+    <script>
+      // Mobile nav toggle with backdrop and smooth transition
+      document.addEventListener('DOMContentLoaded', function() {
+        var navToggle = document.getElementById('nav-toggle');
+        var navMenu = document.getElementById('nav-menu');
+        var navMobileMenu = document.getElementById('nav-mobile-menu');
+        var navBackdrop = document.getElementById('nav-backdrop');
+        function openMenu() {
+          navMobileMenu.classList.remove('-translate-y-full');
+          navMobileMenu.classList.add('translate-y-0');
+          navBackdrop.classList.remove('hidden');
+          navBackdrop.classList.add('opacity-100');
+        }
+        function closeMenu() {
+          navMobileMenu.classList.add('-translate-y-full');
+          navMobileMenu.classList.remove('translate-y-0');
+          navBackdrop.classList.add('hidden');
+          navBackdrop.classList.remove('opacity-100');
+        }
+        navToggle.addEventListener('click', function() {
+          if (navMobileMenu.classList.contains('-translate-y-full')) {
+            openMenu();
+          } else {
+            closeMenu();
+          }
+        });
+        navBackdrop.addEventListener('click', closeMenu);
+        // Close menu on link click
+        Array.from(navMobileMenu.querySelectorAll('a')).forEach(function(link) {
+          link.addEventListener('click', closeMenu);
+        });
+      });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary via-black to-primary-dark"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-electric/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="text-center lg:text-left">
+                    <div class="mb-6">
+                        <h1 class="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                            Bock 
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-electric">
+                                AI
+                            </span>
+                        </h1>
+                        <h2 class="text-xl lg:text-2xl text-gray-300 mb-8 font-light">
+                            Empowering the limitless potential
+                        </h2>
+                    </div>
+                    
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-2xl">
+                        The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology for Bock Automotive to Autonomous Drone Delivery systems for Bock Foods, we're pioneering the future of AI integration across all industries.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="Copy of Bock Company Handbook (Version 1.3).pdf" download class="group relative px-8 py-4 bg-gradient-to-r from-secondary to-accent text-white font-semibold rounded-xl hover:shadow-2xl hover:shadow-secondary/25 transition-all duration-300 transform hover:-translate-y-1">
+                            <span class="relative z-10">Company Handbook</span>
+                            <div class="absolute inset-0 bg-gradient-to-r from-accent to-electric opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+                        </a>
+                        <a href="#work" class="px-8 py-4 border border-secondary/40 text-white font-semibold rounded-xl hover:bg-secondary/10 transition-all duration-300">
+                            View Timeline
+                        </a>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex justify-center lg:justify-start gap-4">
+                        <a href="https://www.instagram.com/bockaibharath" class="w-12 h-12 bg-primary-dark/50 border border-secondary/30 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-secondary transition-all duration-300">
+                            <i class="ri-instagram-line text-xl"></i>
+                        </a>
+                        <a href="https://www.x.com/bockAiBH" class="w-12 h-12 bg-primary-dark/50 border border-secondary/30 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-secondary transition-all duration-300">
+                            <i class="ri-twitter-fill text-xl"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@bockaibharath" class="w-12 h-12 bg-primary-dark/50 border border-secondary/30 rounded-xl flex items-center justify-center text-gray-400 hover:text-white hover:border-secondary transition-all duration-300">
+                            <i class="ri-youtube-fill text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- AI Visual -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-secondary/20 to-electric/20 rounded-full blur-3xl scale-150"></div>
+                        <img src="assets/ai_middle.png" alt="Bock AI Technology" class="relative z-10 w-80 h-auto max-w-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Responsive Showcase Gallery -->
+    <section class="gallery-section py-20 relative z-10" id="gallery">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <span class="inline-block px-4 py-1 bg-secondary/20 text-electric text-sm font-semibold rounded-full mb-4">
+            Showcase
+          </span>
+          <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+            Our <span class="text-electric">AI</span> Gallery
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Explore our cutting-edge AI technology and intelligent automation solutions
+          </p>
+        </div>
+
+        <!-- Main Gallery Container -->
+        <div class="gallery-container mx-auto">
+          <!-- Main Swiper -->
+          <div class="swiper gallery-main mb-8">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="gallery-card">
+                  <img src="assets/img/bock_ai_img1.jpg" alt="AI Robotics" class="gallery-image" />
+                  <div class="gallery-overlay">
+                    <h3 class="gallery-title">AI Robotics</h3>
+                    <p class="gallery-subtitle">Advanced Systems</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="gallery-card">
+                  <img src="assets/img/bock_ai_img2.jpg" alt="Drone AI" class="gallery-image" />
+                  <div class="gallery-overlay">
+                    <h3 class="gallery-title">Drone AI</h3>
+                    <p class="gallery-subtitle">Autonomous Delivery</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="gallery-card">
+                  <img src="assets/img/bock_ai_img3.jpg" alt="Neural Networks AI" class="gallery-image" />
+                  <div class="gallery-overlay">
+                    <h3 class="gallery-title">Neural Networks AI</h3>
+                    <p class="gallery-subtitle">Deep Learning</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thumbnail Gallery -->
+          <div class="gallery-thumbs-container relative">
+            <div class="swiper gallery-thumbs">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="thumb-card">
+                    <img src="assets/img/bock_ai_img1.jpg" alt="AI Robotics" class="thumb-image" />
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="thumb-card">
+                    <img src="assets/img/bock_ai_img2.jpg" alt="Drone AI" class="thumb-image" />
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="thumb-card">
+                    <img src="assets/img/bock_ai_img3.jpg" alt="Neural Networks AI" class="thumb-image" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Pagination with Navigation -->
+            <div class="gallery-controls">
+              <button class="gallery-btn-prev">
+                <i class="ri-arrow-left-line"></i>
+              </button>
+              <div class="gallery-pagination"></div>
+              <button class="gallery-btn-next">
+                <i class="ri-arrow-right-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Products Section -->
+    <section id="products" class="relative py-20 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-primary to-secondary"></div>
+      <div class="absolute top-10 left-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-20 w-80 h-80 bg-electric/5 rounded-full blur-3xl"></div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+          <span
+            class="inline-block px-4 py-2 bg-accent/10 border border-accent/30 rounded-full text-accent-light text-sm font-medium mb-4">
+            AI Products
+          </span>
+          <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+            Our AI
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-light">
+              Innovation
+            </span>
+          </h2>
+          <p class="text-gray-400 text-lg max-w-3xl mx-auto">
+            Cutting-edge AI solutions powering automation across industries. From autonomous vehicles to intelligent healthcare systems.
+          </p>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <!-- Product 1: AI Vision X90 -->
+          <div class="product-card group">
+            <a href="product-details.html?product=ai-vision-x90" class="block">
+              <div class="glass-effect rounded-2xl p-6 h-full hover-lift">
+                <div class="text-center mb-6">
+                  <div
+                    class="w-16 h-16 mx-auto bg-gradient-to-r from-accent to-electric rounded-xl flex items-center justify-center mb-4">
+                    <i class="ri-car-line text-2xl text-white"></i>
+                  </div>
+                  <div class="w-12 h-1 bg-gradient-to-r from-accent to-electric rounded-full mx-auto opacity-60"></div>
+                </div>
+                <div class="product-content">
+                  <h3 class="text-xl font-bold text-white mb-3 text-gradient">AI Vision X90</h3>
+                  <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Advanced AI-powered intelligence system with machine learning capabilities and autonomous decision-making for intelligent applications.
+                  </p>
+                  <div class="flex items-center justify-between mt-4">
+                    <span class="text-accent-light text-xs font-medium">Machine Learning</span>
+                    <div class="flex space-x-1">
+                      <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                      <div class="w-2 h-2 bg-electric rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                      <div class="w-2 h-2 bg-accent-light rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 2: AI Systems -->
+          <div class="product-card group">
+            <a href="product-details.html?product=ai-systems" class="block">
+              <div class="glass-effect rounded-2xl p-6 h-full hover-lift">
+                <div class="text-center mb-6">
+                  <div
+                    class="w-16 h-16 mx-auto bg-gradient-to-r from-electric to-accent rounded-xl flex items-center justify-center mb-4">
+                    <i class="ri-brain-line text-2xl text-white"></i>
+                  </div>
+                  <div class="w-12 h-1 bg-gradient-to-r from-electric to-accent rounded-full mx-auto opacity-60"></div>
+                </div>
+                <div class="product-content">
+                  <h3 class="text-xl font-bold text-white mb-3 text-gradient">AI Systems</h3>
+                  <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Advanced mid-range AI intelligence platform with enhanced processing and scalable enterprise deployments.
+                  </p>
+                  <div class="flex items-center justify-between mt-4">
+                    <span class="text-accent-light text-xs font-medium">Path Planning</span>
+                    <div class="flex space-x-1">
+                      <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                      <div class="w-2 h-2 bg-electric rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                      <div class="w-2 h-2 bg-accent-light rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 3: AI Nano -->
+          <div class="product-card group">
+            <a href="product-details.html?product=ai-nano" class="block">
+              <div class="glass-effect rounded-2xl p-6 h-full hover-lift">
+                <div class="text-center mb-6">
+                  <div
+                    class="w-16 h-16 mx-auto bg-gradient-to-r from-accent-light to-accent rounded-xl flex items-center justify-center mb-4">
+                    <i class="ri-microscope-line text-2xl text-white"></i>
+                  </div>
+                  <div class="w-12 h-1 bg-gradient-to-r from-accent-light to-accent rounded-full mx-auto opacity-60"></div>
+                </div>
+                <div class="product-content">
+                  <h3 class="text-xl font-bold text-white mb-3 text-gradient">AI Nano</h3>
+                  <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Micro-scale AI intelligence systems for embedded IoT applications with advanced neural architectures.
+                  </p>
+                  <div class="flex items-center justify-between mt-4">
+                    <span class="text-accent-light text-xs font-medium">Micro AI</span>
+                    <div class="flex space-x-1">
+                      <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                      <div class="w-2 h-2 bg-electric rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                      <div class="w-2 h-2 bg-accent-light rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 4: AI Mega -->
+          <div class="product-card group">
+            <a href="product-details.html?product=ai-mega" class="block">
+              <div class="glass-effect rounded-2xl p-6 h-full hover-lift">
+                <div class="text-center mb-6">
+                  <div
+                    class="w-16 h-16 mx-auto bg-gradient-to-r from-accent to-accent-light rounded-xl flex items-center justify-center mb-4">
+                    <i class="ri-brain-line text-2xl text-white"></i>
+                  </div>
+                  <div class="w-12 h-1 bg-gradient-to-r from-accent to-accent-light rounded-full mx-auto opacity-60"></div>
+                </div>
+                <div class="product-content">
+                  <h3 class="text-xl font-bold text-white mb-3 text-gradient">AI Mega</h3>
+                  <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Large-scale intelligence platform with massive neural architectures for complex AI applications.
+                  </p>
+                  <div class="flex items-center justify-between mt-4">
+                    <span class="text-accent-light text-xs font-medium">Large AI</span>
+                    <div class="flex space-x-1">
+                      <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                      <div class="w-2 h-2 bg-electric rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                      <div class="w-2 h-2 bg-accent-light rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 5: AI Momentum -->
+          <div class="product-card group">
+            <a href="product-details.html?product=ai-momentum" class="block">
+              <div class="glass-effect rounded-2xl p-6 h-full hover-lift">
+                <div class="text-center mb-6">
+                  <div
+                    class="w-16 h-16 mx-auto bg-gradient-to-r from-electric to-accent-light rounded-xl flex items-center justify-center mb-4">
+                    <i class="ri-rocket-line text-2xl text-white"></i>
+                  </div>
+                  <div class="w-12 h-1 bg-gradient-to-r from-electric to-accent-light rounded-full mx-auto opacity-60"></div>
+                </div>
+                <div class="product-content">
+                  <h3 class="text-xl font-bold text-white mb-3 text-gradient">AI Momentum</h3>
+                  <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    High-performance AI processing system for efficient model training and inference optimization.
+                  </p>
+                  <div class="flex items-center justify-between mt-4">
+                    <span class="text-accent-light text-xs font-medium">AI Processing</span>
+                    <div class="flex space-x-1">
+                      <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                      <div class="w-2 h-2 bg-electric rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                      <div class="w-2 h-2 bg-accent-light rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Product 6: AI Launch -->
+          <div class="product-card group">
+            <a href="product-details.html?product=ai-launch" class="block">
+              <div class="glass-effect rounded-2xl p-6 h-full hover-lift">
+                <div class="text-center mb-6">
+                  <div
+                    class="w-16 h-16 mx-auto bg-gradient-to-r from-accent-light to-electric rounded-xl flex items-center justify-center mb-4">
+                    <i class="ri-cpu-line text-2xl text-white"></i>
+                  </div>
+                  <div class="w-12 h-1 bg-gradient-to-r from-accent-light to-electric rounded-full mx-auto opacity-60"></div>
+                </div>
+                <div class="product-content">
+                  <h3 class="text-xl font-bold text-white mb-3 text-gradient">AI Launch</h3>
+                  <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    Scalable AI deployment platform for scaling AI solutions across various environments efficiently.
+                  </p>
+                  <div class="flex items-center justify-between mt-4">
+                    <span class="text-accent-light text-xs font-medium">AI Deployment</span>
+                    <div class="flex space-x-1">
+                      <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                      <div class="w-2 h-2 bg-electric rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                      <div class="w-2 h-2 bg-accent-light rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<!-- AI Roadmap (Automotive-style) -->
+<section id="work" class="relative py-12 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4 md:px-6">
+    <div class="text-center">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white font-display">AI Roadmap</h2>
+      <p class="mt-2 sm:mt-3 text-base sm:text-lg text-white/70">A clear sequence of AI milestones guiding our journey to autonomous intelligence.</p>
+    </div>
+
+    <!-- Enhanced vertical timeline with improved visual design -->
+    <ol class="relative mt-8 sm:mt-10 md:mt-12 max-w-4xl mx-auto border-s-2 border-gradient-to-b from-secondary/50 via-secondary/30 to-transparent">
+      <li class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+        <div class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-secondary/30 transition-colors">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+            <div class="flex-1">
+              <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 0 — Training/Internship</h4>
+              <p class="text-white/70 text-sm sm:text-base mt-1">AI fundamentals, team setup and research foundation. Building the core knowledge base for advanced AI development.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+        <div class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-secondary/30 transition-colors">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+            <div class="flex-1">
+              <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 1 — Autonomous Vehicle AI</h4>
+              <p class="text-white/70 text-sm sm:text-base mt-1">Level 3-5 automation with advanced ML algorithms. Developing cutting-edge autonomous driving technology.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+        <div class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-secondary/30 transition-colors">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+            <div class="flex-1">
+              <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 2 — Build AI MVP</h4>
+              <p class="text-white/70 text-sm sm:text-base mt-1">AI prototype development and initial testing. Creating minimum viable products for market validation.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+        <div class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+            <div class="flex-1">
+              <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 3 — AI Integration & Funding</h4>
+              <p class="text-white/70 text-sm sm:text-base mt-1">Integrate AI in vehicles and secure ₹500Cr funding. Scaling operations and securing investment.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+        <div class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+            <div class="flex-1">
+              <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 4/5 — Scale & Deploy AI Fleet</h4>
+              <p class="text-white/70 text-sm sm:text-base mt-1">Deploy 100+ autonomous AI taxis and healthcare systems. Global expansion and market domination.</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="mt-6 sm:mt-8 h-px w-full bg-gradient-to-r from-transparent via-secondary/40 to-transparent"></div>
+  </div>
+</section>
+
+  <!-- Modern Footer with Bock-AI Colors -->
+  <footer class="relative bg-gradient-to-b from-[#050816] via-black to-[#050816] text-white border-t border-white/10">
+    <div class="absolute inset-0 bg-[linear-gradient(135deg,#050816,30%,#0a0a0a,70%,#1a1a1a)] opacity-50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-8 sm:mb-10 lg:mb-12">
+        <div class="space-y-4 sm:space-y-6">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-bold text-[#8b6533] mb-2">
+              BOCK
+            </h2>
+            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+              Innovating across multiple industries with cutting-edge technology and sustainable solutions for a better tomorrow.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4">Company</h3>
+            <nav class="space-y-2 sm:space-y-3">
+              <a href="https://bockbharath.com/aboutus.html" class="block text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition-colors duration-200 text-xs sm:text-sm">About Us</a>
+              <a href="https://bockbharath.com/sop.html" class="block text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition-colors duration-200 text-xs sm:text-sm">Employees & SOPs</a>
+              <a href="https://bockbharath.com/progress.html" class="block text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition-colors duration-200 text-xs sm:text-sm">Progress</a>
+            </nav>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Products</h3>
+          <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
+            <a href="product-details.html?product=ai-nano" class="text-gray-400 hover:underline underline-offset-4 decoration-accent decoration-2 transition-colors duration-200">AI Nano</a>
+            <a href="product-details.html?product=ai-systems" class="text-gray-400 hover:underline underline-offset-4 decoration-accent decoration-2 transition-colors duration-200">AI Systems</a>
+            <a href="product-details.html?product=ai-mega" class="text-gray-400 hover:underline underline-offset-4 decoration-accent decoration-2 transition-colors duration-200">AI Mega</a>
+            <a href="product-details.html?product=ai-momentum" class="text-gray-400 hover:underline underline-offset-4 decoration-accent decoration-2 transition-colors duration-200">AI Momentum</a>
+            <a href="product-details.html?product=ai-vision-x90" class="text-gray-400 hover:underline underline-offset-4 decoration-accent decoration-2 transition-colors duration-200">AI Vision X90</a>
+            <a href="product-details.html?product=ai-launch" class="text-gray-400 hover:underline underline-offset-4 decoration-accent decoration-2 transition-colors duration-200">AI Launch</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Businesses</h3>
+          <nav class="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+            <a href="https://automotive.bockbharath.com" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-orange-500 rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock Automotive
+            </a>
+            <a href="https://foods.bockbharath.com" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-green-500 rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock Foods
+            </a>
+            <a href="https://space.bockbharath.com" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-purple-500 rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock Space
+            </a>
+            <a href="https://ai.bockbharath.com" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-[#8b6533] rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock AI
+            </a>
+            <a href="https://health.bockbharath.com" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-teal-500 rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock Health
+            </a>
+            <a href="https://chain.bockbharath.com" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-indigo-500 rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock Chain
+            </a>
+            <a href="#" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-yellow-500 rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock Institute
+            </a>
+            <a href="#" class="flex items-center gap-2 sm:gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#8b6533] decoration-2 transition group">
+              <div class="w-2 h-2 bg-red-500 rounded-full opacity-60 group-hover:opacity-100"></div>
+              Bock Force
+            </a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">Contact Us</h3>
+          <div class="space-y-3 sm:space-y-4 mb-4 sm:mb-6 text-xs sm:text-sm">
+            <div class="flex items-center gap-2 sm:gap-3">
+              <i class="ri-mail-line text-[#8b6533] text-base sm:text-lg"></i>
+              <a href="mailto:info@bockbharath.com" class="text-gray-400 hover:text-white transition">info@bockbharath.com</a>
+            </div>
+            <div class="flex items-center gap-2 sm:gap-3">
+              <i class="ri-phone-line text-[#8b6533] text-base sm:text-lg"></i>
+              <a href="tel:+916360288456" class="text-gray-400 hover:text-white transition">+91 6360288456</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-sm font-medium text-white mb-3 sm:mb-4">Follow Us</h4>
+            <div class="flex gap-2 sm:gap-4">
+              <a href="https://www.facebook.com/people/Bock/61555404186214/" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition group"><i class="fab fa-facebook-f text-gray-400 group-hover:text-white text-sm sm:text-lg"></i></a>
+              <a href="https://www.linkedin.com/company/bockbharth/about/?viewAsMember=true" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-blue-700 rounded-lg flex items-center justify-center transition group"><i class="fab fa-linkedin-in text-gray-400 group-hover:text-white text-sm sm:text-lg"></i></a>
+              <a href="https://twitter.com/bockBH" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition group"><i class="fab fa-twitter text-gray-400 group-hover:text-white text-sm sm:text-lg"></i></a>
+              <a href="https://www.instagram.com/bockaibharath" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 rounded-lg flex items-center justify-center transition-all group"><i class="fab fa-instagram text-gray-400 group-hover:text-white text-sm sm:text-lg"></i></a>
+              <a href="https://www.youtube.com/@bockaibharath" class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 hover:bg-red-600 rounded-lg flex items-center justify-center transition group"><i class="ri-youtube-fill text-gray-400 group-hover:text-white text-sm sm:text-lg"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/20 pt-6 sm:pt-8">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
+          <div class="text-center md:text-left">
+            <p class="text-gray-400 text-xs sm:text-sm">© 2024–2025 BOCK™. All Rights Reserved.</p>
+            <p class="text-gray-500 text-xs mt-1">Octakaigon Bock Private Limited</p>
+          </div>
+          <div class="flex items-center gap-2 px-3 sm:px-4 py-2 text-xs sm:text-sm">
+            <span class="text-gray-500">Powered by Bock AI Technology</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  
+  <script>
+    // Wait for DOM to load before initializing
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Mobile Menu Toggle
+      const btn = document.getElementById('menuBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (btn && menu) {
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      }
+      
+      // Initialize Enhanced AI Gallery with Automatic Movement
+      try {
+        // Initialize thumbnail swiper first
+        const galleryThumbs = new Swiper('.gallery-thumbs', {
+          spaceBetween: 10,
+          slidesPerView: 3,
+          centeredSlides: false,
+          slideToClickedSlide: true,
+          watchSlidesProgress: true,
+          grabCursor: true,
+          loop: false,
+          
+          // Responsive breakpoints for 3 images
+          breakpoints: {
+            320: {
+              slidesPerView: 2,
+              spaceBetween: 8,
+              centeredSlides: false
+            },
+            480: {
+              slidesPerView: 3,
+              spaceBetween: 10,
+              centeredSlides: false
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 12,
+              centeredSlides: false
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 15,
+              centeredSlides: false
+            }
+          },
+          
+          // Pagination
+          pagination: {
+            el: '.gallery-pagination',
+            type: 'fraction',
+            formatFractionCurrent: function (number) {
+              return ('0' + number).slice(-2);
+            },
+            formatFractionTotal: function (number) {
+              return ('0' + number).slice(-2);
+            }
+          }
+        });
+        
+        // Initialize main gallery swiper
+        const galleryMain = new Swiper('.gallery-main', {
+          spaceBetween: 10,
+          slidesPerView: 1,
+          grabCursor: true,
+          loop: false,
+          centeredSlides: true,
+          speed: 800,
+          
+          // Link with thumbnails
+          thumbs: {
+            swiper: galleryThumbs
+          },
+          
+          // Enhanced Autoplay - Automatic movement through all 3 images
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+            stopOnLastSlide: false,
+            reverseDirection: false,
+            waitForTransition: true
+          },
+          
+          // Effects
+          effect: 'coverflow',
+          coverflowEffect: {
+            rotate: 20,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true
+          },
+          
+          // Event callbacks
+          on: {
+            init: function() {
+              console.log('Enhanced AI Gallery initialized successfully!');
+              // Add initial active state to first thumbnail
+              const firstThumb = document.querySelector('.gallery-thumbs .swiper-slide');
+              if (firstThumb) {
+                firstThumb.classList.add('swiper-slide-thumb-active');
+              }
+            },
+            
+            slideChange: function() {
+              // Update thumbnail active states
+              const thumbSlides = document.querySelectorAll('.gallery-thumbs .swiper-slide');
+              thumbSlides.forEach((slide, index) => {
+                if (index === this.realIndex) {
+                  slide.classList.add('swiper-slide-thumb-active');
+                } else {
+                  slide.classList.remove('swiper-slide-thumb-active');
+                }
+              });
+            },
+            
+            transitionStart: function() {
+              // Add transition effects
+              const slides = this.slides;
+              slides.forEach(slide => {
+                const image = slide.querySelector('.gallery-image');
+                if (image) {
+                  image.style.transform = 'scale(1)';
+                }
+              });
+            },
+            
+            transitionEnd: function() {
+              // Scale active slide image
+              const activeSlide = this.slides[this.activeIndex];
+              if (activeSlide) {
+                const image = activeSlide.querySelector('.gallery-image');
+                if (image) {
+                  image.style.transform = 'scale(1.05)';
+                }
+              }
+            },
+            
+            // Handle end of slides for continuous autoplay
+            reachEnd: function() {
+              if (this.autoplay.running) {
+                // When reaching the last slide, go back to first slide
+                setTimeout(() => {
+                  this.slideTo(0, 800);
+                }, 4000);
+              }
+            }
+          }
+        });
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+          if (!galleryMain) return;
+          
+          switch(e.key) {
+            case 'ArrowLeft':
+              galleryMain.slidePrev();
+              e.preventDefault();
+              break;
+            case 'ArrowRight':
+              galleryMain.slideNext();
+              e.preventDefault();
+              break;
+            case ' ':
+              if (galleryMain.autoplay.running) {
+                galleryMain.autoplay.stop();
+              } else {
+                galleryMain.autoplay.start();
+              }
+              e.preventDefault();
+              break;
+          }
+        });
+        
+        // Add touch gestures for mobile
+        if ('ontouchstart' in window) {
+          let touchStartX = 0;
+          let touchEndX = 0;
+          
+          const galleryContainer = document.querySelector('.gallery-container');
+          galleryContainer?.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+          }, { passive: true });
+          
+          galleryContainer?.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleGesture();
+          }, { passive: true });
+          
+          function handleGesture() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+              if (diff > 0) {
+                // Swipe left - next slide
+                galleryMain?.slideNext();
+              } else {
+                // Swipe right - previous slide
+                galleryMain?.slidePrev();
+              }
+            }
+          }
+        }
+        
+        // Manual navigation buttons
+        const prevBtn = document.querySelector('.gallery-btn-prev');
+        const nextBtn = document.querySelector('.gallery-btn-next');
+        
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function() {
+            galleryMain?.slidePrev();
+          });
+        }
+        
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function() {
+            galleryMain?.slideNext();
+          });
+        }
+        
+        // Pause autoplay on hover
+        const gallerySection = document.querySelector('.gallery-container');
+        if (gallerySection) {
+          gallerySection.addEventListener('mouseenter', function() {
+            galleryMain?.autoplay?.stop();
+          });
+          
+          gallerySection.addEventListener('mouseleave', function() {
+            galleryMain?.autoplay?.start();
+          });
+        }
+        
+      } catch (error) {
+        console.log('Automotive-style AI Gallery initialization skipped:', error.message);
+        
+        // Fallback gallery implementation
+        const mainGallery = document.querySelector('.gallery-main .swiper-wrapper');
+        const thumbsGallery = document.querySelector('.gallery-thumbs .swiper-wrapper');
+        const prevBtn = document.querySelector('.gallery-btn-prev');
+        const nextBtn = document.querySelector('.gallery-btn-next');
+        
+        if (mainGallery && thumbsGallery) {
+          let currentSlide = 0;
+          const slides = mainGallery.querySelectorAll('.swiper-slide');
+          const thumbSlides = thumbsGallery.querySelectorAll('.swiper-slide');
+          
+          // Show first slide
+          showSlide(0);
+          
+          function showSlide(index) {
+            // Hide all slides
+            slides.forEach((slide, i) => {
+              slide.style.display = i === index ? 'block' : 'none';
+            });
+            
+            // Update thumbnails
+            thumbSlides.forEach((thumb, i) => {
+              if (i === index) {
+                thumb.classList.add('swiper-slide-thumb-active');
+              } else {
+                thumb.classList.remove('swiper-slide-thumb-active');
+              }
+            });
+            
+            currentSlide = index;
+          }
+          
+          function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            showSlide(next);
+          }
+          
+          function prevSlide() {
+            const prev = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(prev);
+          }
+          
+          // Button events
+          if (nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+          }
+          
+          if (prevBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+          }
+          
+          // Thumbnail clicks
+          thumbSlides.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => showSlide(index));
+          });
+          
+          // Autoplay
+          setInterval(nextSlide, 4000);
+          
+          console.log('Fallback AI gallery implemented successfully!');
+        }
+      }
+      
+      // Top scroll progress bar
+      // Top scroll progress bar (keep this)
+      const scrollProgress = document.createElement('div');
+      scrollProgress.id = 'scroll-progress';
+      scrollProgress.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 4px;
+        background: linear-gradient(90deg, #8b6533, #b8802e, #d4a649);
+        z-index: 9999;
+        transition: width 0.1s ease;
+      `;
+      document.body.appendChild(scrollProgress);
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = scrollPercent + '%';
+      }, { passive: true });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            const headerHeight = 80;
+            const targetPosition = target.offsetTop - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      
+      // Enhanced scroll reveal animations for cards
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      // Observe product cards and roadmap cards
+      document.querySelectorAll('.product-card, .roadmap-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(card);
+      });
+      
+      // Simple card hover effects for roadmap
+      document.querySelectorAll('.roadmap-item').forEach(card => {
+        const cardElement = card.querySelector('.glass-effect');
+        if (cardElement) {
+          card.addEventListener('mouseenter', () => {
+            cardElement.style.transform = 'scale(1.02) translateY(-5px)';
+          });
+          
+          card.addEventListener('mouseleave', () => {
+            cardElement.style.transform = 'scale(1) translateY(0)';
+          });
+        }
+      });
+      
+      // AI Roadmap moving dot synced to scroll (automotive-style) - ENABLED
+      (function(){
+        const roadSection = document.getElementById('work');
+        if(!roadSection) return;
+        const list = roadSection.querySelector('ol');
+        if(!list) return;
+        const items = Array.from(list.querySelectorAll('li'));
+        if(!items.length) return;
+
+        // Create background vertical line for cursor to travel on
+        const backgroundLine = document.createElement('div');
+        backgroundLine.id = 'aiRoadmapLine';
+        backgroundLine.setAttribute('aria-hidden','true');
+        backgroundLine.style.position = 'absolute';
+        backgroundLine.style.left = '-1px';
+        backgroundLine.style.width = '2px';
+        backgroundLine.style.height = '100%';
+        backgroundLine.style.top = '0px';
+        backgroundLine.style.borderRadius = '1px';
+        backgroundLine.style.zIndex = '0';
+        
+        // White thin line
+        backgroundLine.style.background = 'white';
+        backgroundLine.style.opacity = '0.8';
+        
+        list.appendChild(backgroundLine);
+
+        const cursor = document.createElement('span');
+        cursor.id = 'aiRoadmapCursor';
+        cursor.setAttribute('aria-hidden','true');
+        cursor.style.position = 'absolute';
+        cursor.style.left = '-12px';
+        cursor.style.width = '20px';
+        cursor.style.height = '20px';
+        cursor.style.borderRadius = '9999px';
+        cursor.style.transition = 'top 360ms cubic-bezier(.22,.61,.36,1)';
+        cursor.style.top = '0px';
+        cursor.style.zIndex = '1';
+        
+        // AI theme colors for cursor
+        cursor.style.background = '#8b6533';
+        cursor.style.boxShadow = '0 0 18px rgba(139, 101, 51, 0.55)';
+        
+        list.appendChild(cursor);
+
+        function clamp(v, min, max){ return Math.max(min, Math.min(max, v)); }
+
+        function updateCursor(){
+          const vpCenter = window.scrollY + window.innerHeight/2;
+          const listRect = list.getBoundingClientRect();
+          const listTop = window.scrollY + listRect.top;
+          const listBottom = window.scrollY + listRect.bottom;
+          const listHeight = Math.max(1, listBottom - listTop);
+          // find closest item center
+          let closestI = 0, closestD = Infinity, closestCenter = listTop;
+          items.forEach((el)=>{
+            const r = el.getBoundingClientRect();
+            const c = window.scrollY + r.top + r.height/2;
+            const d = Math.abs(c - vpCenter);
+            if(d < closestD){ closestD = d; closestI = items.indexOf(el); closestCenter = c; }
+          });
+          // position relative to list
+          const pos = clamp((closestCenter - listTop) / listHeight, 0, 1);
+          const y = pos * listRect.height; // pixels inside list
+          cursor.style.top = `${y - 10}px`;
+        }
+
+        window.addEventListener('scroll', updateCursor, { passive: true });
+        window.addEventListener('resize', updateCursor);
+        updateCursor();
+      })();
+      
+    });
+  </script>
+  </body>
+</html>

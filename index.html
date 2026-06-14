@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/phosphor-icons"></script>
   <link rel="icon" type="image/svg+xml" href="assets/AI.svg" />
   <link rel="icon" type="image/x-icon" href="assets/AI.svg" />
   <link rel="apple-touch-icon" href="assets/AI.svg" />
-  <meta name="theme-color" content="#D4AF37" />
+  <meta name="theme-color" content="#875F2C" />
 
   <script>
     if (window.tailwind) {
@@ -19,12 +20,14 @@
             colors: {
               'primary': '#0A0F1C',
               'primary-dark': '#060B15',
-              'secondary': '#D4AF37',
-              'accent': '#B8860B',
-              'electric': '#A0522D',
+              'secondary': '#875F2C',
+              'accent': '#A08057',
+              'electric': '#C0AA8F',
               'midnight': '#0F172A',
               'slate': '#334155',
-              'azure': '#0EA5E9'
+              'azure': '#0EA5E9',
+              'space-navy': '#0a0a2e',
+              'bock-ai': '#875F2C'
             },
             fontFamily: {
               'poppins': ['Poppins', 'sans-serif']
@@ -52,8 +55,8 @@
                 '100%': { left: '100%', opacity: '0' }
               },
               glow: {
-                '0%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0.5)' },
-                '100%': { boxShadow: '0 0 30px rgba(160, 82, 45, 0.8)' }
+                '0%': { boxShadow: '0 0 20px rgba(135, 95, 44, 0.5)' },
+                '100%': { boxShadow: '0 0 30px rgba(160, 128, 87, 0.8)' }
               },
               float: {
                 '0%, 100%': { transform: 'translateY(0px)' },
@@ -66,7 +69,8 @@
             },
             backgroundImage: {
               'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-              'secondary-cosmic': 'linear-gradient(135deg, #0F172A 0%, #D4AF37 50%, #0A0F1C 100%)'
+              'ai-cosmic': 'linear-gradient(135deg, #0F172A 0%, #875F2C 50%, #0A0F1C 100%)'
+              
             }
           }
         }
@@ -74,10 +78,24 @@
     }
   </script>
   <style>
+    * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+a {
+  max-width: none;
+}
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     body {
-      background: linear-gradient(135deg, #060B15 0%, #0F172A 25%, #D4AF37 50%, #0F172A 75%, #060B15 100%);
+          background: linear-gradient(135deg, #060B15 0%, #0F172A 25%, #875F2C 50%, #0F172A 75%, #060B15 100%);
+
       background-attachment: fixed;
       background-size: 400% 400%;
       animation: gradientShift 12s ease infinite;
@@ -98,8 +116,8 @@
     }
 
     .btn-shine {
-      background: linear-gradient(45deg, #D4AF37, #B8860B, #A0522D);
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      background: linear-gradient(45deg, #875F2C, #A08057, #6B4A1F);
+    border: 1px solid rgba(135, 95, 44, 0.3);
       position: relative;
       overflow: hidden;
     }
@@ -111,7 +129,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+      background: linear-gradient(120deg, transparent, rgba(135, 95, 44, 0.6), transparent);
       transition: all 800ms ease;
     }
 
@@ -120,8 +138,8 @@
     }
 
     .btn-shine:hover {
-      background: linear-gradient(45deg, #B8860B, #A0522D, #A0522D);
-      box-shadow: 0 0 30px rgba(184, 134, 11, 0.5);
+     background: linear-gradient(45deg, #A08057, #6B4A1F, #875F2C);
+    box-shadow: 0 0 30px rgba(135, 95, 44, 0.5);
       transform: translateY(-2px);
     }
 
@@ -130,15 +148,15 @@
     .glass-effect {
       background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(212, 175, 55, 0.2);
+      border: 1px solid rgba(135, 95, 44, 0.2);
     }
 
     .glow-text {
-      text-shadow: 0 0 20px rgba(184, 134, 11, 0.5);
+      text-shadow: 0 0 20px rgba(135, 95, 44, 0.5);
     }
 
     .timeline-glow {
-      box-shadow: 0 0 20px rgba(30, 64, 175, 0.3);
+      box-shadow: 0 0 20px rgba(135, 95, 44, 0.3);
     }
 
     /* Hide vertical scrollbar */
@@ -154,10 +172,10 @@
       left: 0;
       width: 0%;
       height: 4px;
-      background: linear-gradient(90deg, #D4AF37, #B8860B, #A0522D);
+      background: linear-gradient(90deg, #875F2C, #A08057, #6B4A1F);
       z-index: 9999;
       transition: width 0.1s ease;
-      box-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
+      box-shadow: 0 0 10px rgba(135, 95, 44, 0.5);
     }
 
     /* Gallery Hover Effects */
@@ -168,7 +186,7 @@
 
     .gallery-item:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(218, 165, 32, 0.2);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 30px rgba(135, 95, 44, 0.5);
     }
 
     .gallery-item img {
@@ -263,16 +281,16 @@
 
     .glow-3d {
       box-shadow:
-        0 0 20px rgba(218, 165, 32, 0.3),
-        0 0 60px rgba(218, 165, 32, 0.1),
-        inset 0 0 20px rgba(218, 165, 32, 0.1);
+        0 0 20px rgba(59, 130, 246, 0.3),
+        0 0 60px rgba(59, 130, 246, 0.1),
+        inset 0 0 20px rgba(59, 130, 246, 0.1);
     }
 
     .product-card:hover .glow-3d {
       box-shadow:
-        0 0 30px rgba(218, 165, 32, 0.5),
-        0 0 80px rgba(218, 165, 32, 0.2),
-        inset 0 0 30px rgba(218, 165, 32, 0.15);
+        0 0 30px rgba(59, 130, 246, 0.5),
+        0 0 80px rgba(59, 130, 246, 0.2),
+        inset 0 0 30px rgba(59, 130, 246, 0.15);
     }
 
     /* Timeline CSS overrides for secondary theme */
@@ -292,7 +310,7 @@
     }
 
     .cd-timeline__content {
-      box-shadow: 0 8px 25px rgba(218, 165, 32, 0.15) !important;
+      box-shadow: 0 8px 25px rgba(135, 95, 44, 0.15) !important;
     }
 
     .cd-timeline__content::before {
@@ -307,12 +325,12 @@
     }
 
     .cd-timeline__date {
-      color: #B8860B !important;
+      color: #875F2C !important;
       font-weight: 500 !important;
     }
 
     ol[class*="border-s-2"] {
-      border-image: linear-gradient(to bottom, #D4AF37 0%, #B8860B 50%, #D4AF37 100%) 1;
+      border-image: linear-gradient(to bottom, #875F2C 0%, #A08057 50%, #875F2C 100%) 1;
       border-left: 2px solid;
       border-image-slice: 1;
     }
@@ -324,9 +342,19 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(to bottom, rgba(212, 175, 55, 0.8) 0%, rgba(255, 215, 0, 0.9) 50%, rgba(212, 175, 55, 0.3) 100%);
-      box-shadow: 0 0 10px rgba(218, 165, 32, 0.4);
+      background: linear-gradient(to bottom, rgba(135, 95, 44, 0.8) 0%, rgba(135, 95, 44, 0.9) 50%, rgba(135, 95, 44, 0.3) 100%);
+      box-shadow: 0 0 10px rgba(135, 95, 44, 0.4);
     }
+
+   
+
+@media (max-width: 639px) {
+    .products-grid > a:last-child {
+        grid-column: auto;
+        max-width: 100%;
+        margin: 0;
+    }
+}
   </style>
   <title>Bock AI</title>
 </head>
@@ -518,12 +546,12 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
       </div>
 
       <!-- Gallery Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> 
         <!-- Gallery Item 1 -->
         <div
           class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
           <div class="aspect-square overflow-hidden">
-            <img src="image/bock_AI_img3.jpg" alt="AI Mission 1"
+            <img src="image/img1.jpg" alt="AI Mission 1"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -549,7 +577,7 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
         <div
           class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
           <div class="aspect-square overflow-hidden">
-            <img src="image/bock_AI_img1.jpg" alt="AI Mission 2"
+            <img src="image/img2.jpg" alt="AI Mission 2"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -575,7 +603,7 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
         <div
           class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
           <div class="aspect-square overflow-hidden">
-            <img src="image/bock_AI_img3.jpg" alt="AI Mission 3"
+            <img src="image/img3.jpg" alt="AI Mission 3"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -601,7 +629,7 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
         <div
           class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
           <div class="aspect-square overflow-hidden">
-            <img src="image/bock_AI_img3.jpg" alt="AI Mission 4"
+            <img src="image/img4.jpg" alt="AI Mission 4"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -627,7 +655,7 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
         <div
           class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
           <div class="aspect-square overflow-hidden">
-            <img src="image/bock_AI_img2.jpg" alt="AI Mission 5"
+            <img src="image/img5.jpg" alt="AI Mission 5"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -653,7 +681,7 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
         <div
           class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
           <div class="aspect-square overflow-hidden">
-            <img src="image/bock_AI_img1.jpg" alt="AI Mission 6"
+            <img src="image/img6.jpg" alt="AI Mission 6"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -674,61 +702,8 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
             </div>
           </div>
         </div>
-
-        <!-- Gallery Item 7 -->
-        <div
-          class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
-          <div class="aspect-square overflow-hidden">
-            <img src="image/img2.jpg" alt="AI Mission 7"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            </div>
-          </div>
-          <div
-            class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <h3 class="text-white font-bold text-lg mb-2">Launch Vehicle</h3>
-            <p class="text-gray-300 text-sm">Next-generation reusable rocket technology development.</p>
-            <div class="mt-4 flex items-center gap-2">
-              <span class="px-3 py-1 bg-accent/20 text-electric text-xs rounded-full">2025</span>
-              <span class="px-3 py-1 bg-secondary/20 text-secondary text-xs rounded-full">Reusable</span>
-            </div>
-          </div>
-          <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div class="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-              <i class="ri-eye-line text-white text-lg"></i>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gallery Item 8 -->
-        <div
-          class="gallery-item group relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark/50 to-midnight/50 backdrop-blur-sm border border-accent/20 hover:border-accent/40 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2">
-          <div class="aspect-square overflow-hidden">
-            <img src="image/img5.jpg" alt="AI Mission 8"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            </div>
-          </div>
-          <div
-            class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-            <h3 class="text-white font-bold text-lg mb-2">Orbital Station</h3>
-            <p class="text-gray-300 text-sm">Modular AI station components for extended missions.</p>
-            <div class="mt-4 flex items-center gap-2">
-              <span class="px-3 py-1 bg-accent/20 text-electric text-xs rounded-full">2025</span>
-              <span class="px-3 py-1 bg-secondary/20 text-secondary text-xs rounded-full">Station</span>
-            </div>
-          </div>
-          <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div class="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-              <i class="ri-eye-line text-white text-lg"></i>
-            </div>
-          </div>
-        </div>
+ 
       </div>
-
-     
     </div>
   </section>
 
@@ -744,7 +719,7 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
      
         <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
           Our AI
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-electric">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent">
             Products
           </span>
         </h2>
@@ -756,19 +731,18 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
       </div>
 
       <!-- Products Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        <!-- Product 1: Inertia Nano -->
-        <a href="product-details.html?product=inertia-nano" class="product-card group block">
+       <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12 max-w-5xl mx-auto products-grid">
+        <!-- Product 1:-->
+        <a href="product-details.html?product=zeyon-c1090" class="product-card group block">
           <div class="product-inner glass-effect glow-3d rounded-2xl p-6 h-full">
             <div class="product-icon float-3d text-center mb-6">
-              <div
-                class="w-16 h-16 mx-auto bg-gradient-to-r from-accent to-electric rounded-xl flex items-center justify-center mb-4">
-                <i class="ri-rocket-2-line text-2xl text-white"></i>
+              <div class="w-16 h-16 mx-auto bg-gradient-to-r from-secondary to-accent rounded-xl flex items-center justify-center mb-4">
+                <i class="ri-cpu-line text-2xl text-white"></i>
               </div>
-              <div class="w-12 h-1 bg-gradient-to-r from-accent to-electric rounded-full mx-auto opacity-60"></div>
+              <div class="w-12 h-1 bg-gradient-to-r from-secondary to-accent rounded-full mx-auto opacity-60"></div>
             </div>
             <div class="product-content">
-              <h3 class="text-xl font-bold text-white mb-3 glow-text">Zevyon X90</h3>
+              <h3 class="text-xl font-bold text-white mb-3 glow-text">Zeyon C1090</h3>
               <p class="text-gray-300 text-sm leading-relaxed mb-4">
                 Compact nanosatellite platform designed for research missions and educational purposes. Features
                 advanced miniaturized systems for AI exploration.
@@ -781,18 +755,18 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
           </div>
         </a>
 
-        <!-- Product 2: Inertia -->
-        <a href="product-details.html?product=inertia" class="product-card group block">
+        <!-- Product 2: Zeyon G1090 -->
+        <a href="product-details.html?product=zeyon-g1090" class="product-card group block">
           <div class="product-inner glass-effect glow-3d rounded-2xl p-6 h-full">
             <div class="product-icon float-3d text-center mb-6">
               <div
                 class="w-16 h-16 mx-auto bg-gradient-to-r from-secondary to-accent rounded-xl flex items-center justify-center mb-4">
-                <i class="ri-satellite-line text-2xl text-white"></i>
+                <i class="ri-cpu-fill text-2xl text-white"></i>
               </div>
               <div class="w-12 h-1 bg-gradient-to-r from-secondary to-accent rounded-full mx-auto opacity-60"></div>
             </div>
             <div class="product-content">
-              <h3 class="text-xl font-bold text-white mb-3 glow-text">BQP</h3>
+              <h3 class="text-xl font-bold text-white mb-3 glow-text">Zeyon G1090</h3>
               <p class="text-gray-300 text-sm leading-relaxed mb-4">
                 Mid-range satellite system with enhanced communication capabilities and scientific instrumentation for
                 comprehensive AI missions.
@@ -805,15 +779,37 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
           </div>
         </a>
 
-        <!-- Product 3:  -->
-        <a href="product-details.html?product=inertia-mega" class="product-card group block">
+        <!-- Product 3: Zeyon QSC1090 -->
+        <a href="product-details.html?product=zeyon-qsc1090" class="product-card group block">
           <div class="product-inner glass-effect glow-3d rounded-2xl p-6 h-full">
             <div class="product-icon float-3d text-center mb-6">
               <div
-                class="w-16 h-16 mx-auto bg-gradient-to-r from-electric to-azure rounded-xl flex items-center justify-center mb-4">
-                <i class="ri-ship-line text-2xl text-white"></i>
+                class="w-16 h-16 mx-auto bg-gradient-to-r from-secondary to-accent rounded-xl flex items-center justify-center mb-4">
+                <i class="ri-sensor-fill text-2xl text-white"></i>
               </div>
-              <div class="w-12 h-1 bg-gradient-to-r from-electric to-azure rounded-full mx-auto opacity-60"></div>
+              <div class="w-12 h-1 bg-gradient-to-r from-secondary to-accent rounded-full mx-auto opacity-60"></div>
+            </div>
+            <div class="product-content">
+              <h3 class="text-xl font-bold text-white mb-3 glow-text">Zeyon QSC1090</h3>
+              <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                Large-scale satellite platform with advanced propulsion systems and deep AI exploration capabilities
+                for ambitious missions.
+              </p>
+              <div class="flex items-center justify-between mt-4">
+                <span class="text-electric text-xs font-medium">Deep  Explorer</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!-- Product 4: BAVT -->
+        <a href="product-details.html?product=bavt" class="product-card group block">
+          <div class="product-inner glass-effect glow-3d rounded-2xl p-6 h-full">
+            <div class="product-icon float-3d text-center mb-6">
+              <div
+                class="w-16 h-16 mx-auto bg-gradient-to-r from-secondary to-accent rounded-xl flex items-center justify-center mb-4">
+                <i class="ri-ram-2-fill text-2xl text-white"></i>
+              </div>
+              <div class="w-12 h-1 bg-gradient-to-r from-secondary to-accent rounded-full mx-auto opacity-60"></div>
             </div>
             <div class="product-content">
               <h3 class="text-xl font-bold text-white mb-3 glow-text">BAVT</h3>
@@ -827,15 +823,15 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
             </div>
           </div>
         </a>
-
-        <a href="product-details.html?product=inertia-mega" class="product-card group block">
+        <!-- Product 5: Orventus -->
+        <a href="product-details.html?product=orventus" class="product-card group block">
           <div class="product-inner glass-effect glow-3d rounded-2xl p-6 h-full">
             <div class="product-icon float-3d text-center mb-6">
               <div
-                class="w-16 h-16 mx-auto bg-gradient-to-r from-electric to-azure rounded-xl flex items-center justify-center mb-4">
-                <i class="ri-ship-line text-2xl text-white"></i>
+                class="w-16 h-16 mx-auto bg-gradient-to-r from-secondary to-accent rounded-xl flex items-center justify-center mb-4">
+                <i class="ri-car-line text-2xl text-white"></i>
               </div>
-              <div class="w-12 h-1 bg-gradient-to-r from-electric to-azure rounded-full mx-auto opacity-60"></div>
+              <div class="w-12 h-1 bg-gradient-to-r from-secondary to-accent rounded-full mx-auto opacity-60"></div>
             </div>
             <div class="product-content">
               <h3 class="text-xl font-bold text-white mb-3 glow-text">Orventus</h3>
@@ -959,178 +955,105 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
             </div>
           </div>
         </li>
+
+        <li
+          class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+          <div
+            class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+              <div class="flex-1">
+                <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 7</h4>
+                <p class="text-white/70 text-sm sm:text-base mt-1">Enter details here.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li
+          class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+          <div
+            class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+              <div class="flex-1">
+                <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 8</h4>
+                <p class="text-white/70 text-sm sm:text-base mt-1">Enter details here.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li
+          class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+          <div
+            class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+              <div class="flex-1">
+                <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 9</h4>
+                <p class="text-white/70 text-sm sm:text-base mt-1">Enter details here.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+       <li
+          class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+          <div
+            class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+              <div class="flex-1">
+                <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 10</h4>
+                <p class="text-white/70 text-sm sm:text-base mt-1">Enter details here.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li
+          class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+          <div
+            class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+              <div class="flex-1">
+                <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 11</h4>
+                <p class="text-white/70 text-sm sm:text-base mt-1">Enter details here.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li
+          class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+          <div
+            class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+              <div class="flex-1">
+                <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 12</h4>
+                <p class="text-white/70 text-sm sm:text-base mt-1">Enter details here.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li
+          class="relative ps-6 sm:ps-8 md:ps-10 py-4 sm:py-5 md:py-6 group hover:ps-8 sm:hover:ps-10 md:hover:ps-12 transition-all duration-300">
+          <div
+            class="bg-gradient-to-r from-white/5 to-transparent rounded-lg p-3 sm:p-4 backdrop-blur-sm border border-white/10 group-hover:border-white/20 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4">
+              <div class="flex-1">
+                <h4 class="text-white font-bold text-base sm:text-lg font-display">Phase 13</h4>
+                <p class="text-white/70 text-sm sm:text-base mt-1">Enter details here.</p>
+              </div>
+            </div>
+          </div>
+        </li>
+
       </ol>
 
       <div class="mt-6 sm:mt-8 h-px w-full bg-gradient-to-r from-transparent via-secondary-600/40 to-transparent"></div>
     </div>
   </section>
 
-  <footer class="relative bg-gradient-to-b from-primary via-black to-primary text-white border-t border-white/10">
-    <div class="absolute inset-0 bg-[linear-gradient(135deg,#000000,30%,#0a0a0a,70%,#140000)] opacity-50"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-        <div class="space-y-6">
-          <div>
-            <h2 class="text-2xl font-bold text-secondary mb-2">
-              BOCK
-            </h2>
-            <p class="text-gray-400 text-sm leading-relaxed">
-              Innovating across multiple industries with cutting-edge technology and sustainable solutions for a better
-              tomorrow.
-            </p>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-4">Company</h3>
-            <nav class="space-y-3">
-              <a href="https://bockbharath.com/aboutus.html"
-                class="block text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200 text-sm">About
-                Us</a>
-              <a href="https://bockbharath.com/progress.html"
-                class="block text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200 text-sm">Progress</a>
-              <a href="https://bockbharath.com/internship.html"
-                class="block text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200 text-sm">Join
-                Us</a>
-            </nav>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-white mb-6">Products</h3>
-          <div class="grid grid-cols-2 gap-x-8 gap-y-3 text-sm">
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Automative
-              EV1</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Automative
-              SPV</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Bock
-              Foods</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">DroBock</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">ZipDroBock</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Inertia
-              Nano</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Inertia</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Inertia
-              Mega</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Momentum</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Zeyon
-              X90</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">E-commerce</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">BQP</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">BAVT</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Orventus</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Eira</a>
-            <a href="#"
-              class="text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition-colors duration-200">Typhronex</a>
-          </div>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-white mb-6">Businesses</h3>
-          <nav class="space-y-3 text-sm">
-            <a href="https://AI.bockbharath.com"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock AI
-            </a>
-            <a href="https://foods.bockbharath.com"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock Foods
-            </a>
-            <a href="https://AI.bockbharath.com"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock AI
-            </a>
-            <a href="https://ai.bockbharath.com"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock AI
-            </a>
-            <a href="https://health.bockbharath.com"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock Health
-            </a>
-            <a href="https://chain.bockbharath.com"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock Chain
-            </a>
-            <a href="#"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock Institute
-            </a>
-            <a href="#"
-              class="flex items-center gap-3 text-gray-400 hover:underline underline-offset-4 decoration-[#D4AF37] decoration-2 transition group">
-              <div class="w-2 h-2 bg-[#D4AF37] rounded-full opacity-60 group-hover:opacity-100"></div>
-              Bock Force
-            </a>
-          </nav>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-white mb-6">Contact Us</h3>
-          <div class="space-y-4 mb-6 text-sm">
-            <div class="flex items-center gap-3">
-              <i class="ri-mail-line text-secondary text-lg"></i>
-              <a href="mailto:info@bockbharath.com"
-                class="text-gray-400 hover:text-white transition">info@bockbharath.com</a>
-            </div>
-            <div class="flex items-center gap-3">
-              <i class="ri-phone-line text-secondary text-lg"></i>
-              <a href="tel:+916360288456" class="text-gray-400 hover:text-white transition">+91 6360288456</a>
-            </div>
-          </div>
-          <div>
-            <h4 class="text-sm font-medium text-white mb-4">Follow Us</h4>
-            <div class="flex gap-4">
-              <a href="https://www.facebook.com/bockbharath/"
-                class="w-10 h-10 bg-gray-800 hover:bg-secondary-600 rounded-lg flex items-center justify-center transition group"><i
-                  class="ri-facebook-fill text-gray-400 group-hover:text-white text-lg"></i></a>
-              <a href="https://www.linkedin.com/company/bockbharth/"
-                class="w-10 h-10 bg-gray-800 hover:bg-secondary-700 rounded-lg flex items-center justify-center transition group"><i
-                  class="ri-linkedin-fill text-gray-400 group-hover:text-white text-lg"></i></a>
-              <a href="https://x.com/BockBH"
-                class="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition group"><i
-                  class="ri-twitter-fill text-gray-400 group-hover:text-white text-lg"></i></a>
-              <a href="https://www.instagram.com/bockbharath"
-                class="w-10 h-10 bg-gray-800 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 rounded-lg flex items-center justify-center transition-all group"><i
-                  class="ri-instagram-fill text-gray-400 group-hover:text-white text-lg"></i></a>
-              <a href="https://www.youtube.com/@bockbharath"
-                class="w-10 h-10 bg-gray-800 hover:bg-secondary-600 rounded-lg flex items-center justify-center transition group"><i
-                  class="ri-youtube-fill text-gray-400 group-hover:text-white text-lg"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-white/20 pt-8">
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="text-center md:text-left">
-            <p class="text-gray-400 text-sm">© 2024–2025 BOCK™. All Rights Reserved.</p>
-            <p class="text-gray-500 text-xs mt-1">Octakaigon Bock Private Limited</p>
-          </div>
-          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-            class="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition text-sm">
-            <span class="text-gray-400">Back to top</span>
-            <i class="ri-arrow-up-line text-gray-400"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </footer>
+  
 
   <script src="assets/js/main.js"></script>
   <script>
@@ -1192,8 +1115,8 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
       cursor.style.width = '20px';
       cursor.style.height = '20px';
       cursor.style.borderRadius = '9999px';
-      cursor.style.background = '#D4AF37';
-      cursor.style.boxShadow = '0 0 18px rgba(212, 175, 55, 0.55)';
+      cursor.style.background = '#875F2C';
+      cursor.style.boxShadow = '0 0 18px rgba(135, 95, 44, 0.55)';
       cursor.style.transition = 'top 360ms cubic-bezier(.22,.61,.36,1)';
       cursor.style.top = '0px';
       cursor.style.zIndex = '1';
@@ -1226,6 +1149,15 @@ The backbone of Bock's automation ecosystem. From Autonomous Vehicle Technology 
       updateCursor();
     })();
   </script>
+  <div id="footer"></div>
+    <script>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
+    
+    </script>
 </body>
 
 </html>

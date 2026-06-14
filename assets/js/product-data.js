@@ -1,10 +1,11 @@
 const productData = {
-  'inertia-nano': {
+  'zeyon-c1090': {
     // ============= BASIC METADATA =============
     metadata: {
-      name: 'Inertia Nano',
+      name: 'Zeyon C1090',
       description: 'Revolutionary nanosatellite platform designed for research missions, educational purposes, and commercial applications with advanced miniaturized systems for space exploration.',
       icon: 'ri-rocket-2-line',
+      image: 'image/img1.jpg',
       category: 'Nanosatellite Systems',
     },
 
@@ -13,7 +14,7 @@ const productData = {
         title: 'Advanced Nano Technology',
         content: 'Our Inertia Nano represents breakthrough miniaturization technology, packing advanced space-grade systems into a compact CubeSat format. With precision engineering and rigorous testing protocols, this nanosatellite delivers exceptional performance for critical research and commercial missions.',
         type: 'content-image',
-        image: 'assets/rocket_middle2.png'
+         image: 'image/img1.jpg',
       },
       {
         title: 'Nano Mission Operations',
@@ -55,11 +56,12 @@ const productData = {
 
   },
   
-  'inertia': {
-    name: 'Inertia',
+  'zeyon-g1090': {
+    name: 'Zeyon G1090',
     subtitle: 'Mid-Range Satellite Platform',
     description: 'Advanced mid-range satellite system with enhanced communication capabilities, scientific instrumentation, and extended mission duration for comprehensive space missions.',
     icon: 'ri-satellite-line',
+     image: 'image/img6.jpg',
     category: 'Small Satellite Systems',
     
     contentSections: [
@@ -67,7 +69,7 @@ const productData = {
         title: 'Advanced Satellite Technology',
         content: 'Our Inertia satellite represents cutting-edge mid-range satellite technology, incorporating advanced communication systems and scientific instrumentation. With robust engineering and comprehensive testing protocols, this platform delivers exceptional performance for extended space missions.',
         type: 'content-image',
-        image: 'assets/img/bock_ai_img1.jpg'
+        image: 'image/img6.jpg'
       },
       {
         title: 'Extended Mission Operations',
@@ -109,11 +111,12 @@ const productData = {
    
   },
   
-  'inertia-mega': {
-    name: 'Inertia Mega',
+  'bavt': {
+    name: 'BAVT',
     subtitle: 'Large-Scale Space Platform',
     description: 'Heavy-duty satellite platform with advanced propulsion systems and deep space exploration capabilities for ambitious interplanetary missions.',
     icon: 'ri-space-ship-line',
+     image: 'image/img3.jpg',
     category: 'Large Satellite Systems',
     
     contentSections: [
@@ -121,7 +124,7 @@ const productData = {
         title: 'Deep Space Technology',
         content: 'Our Inertia Mega represents the pinnacle of large-scale satellite engineering, incorporating advanced propulsion systems and deep space exploration capabilities. With cutting-edge technology and extensive testing, this platform enables ambitious interplanetary missions.',
         type: 'content-image',
-        image: 'assets/img/bock_automotive_img1.jpg'
+        image: 'image/img3.jpg'
       },
       {
         title: 'Interplanetary Mission Capabilities',
@@ -163,11 +166,12 @@ const productData = {
  
   },
   
-  'momentum': {
-    name: 'Momentum',
+  'zeyon-qsc1090': {
+    name: 'Zeyon QSC1090',
     subtitle: 'High-Performance Propulsion',
     description: 'Advanced propulsion system designed for efficient orbital transfers, station-keeping, and interplanetary missions with innovative fuel management technology.',
     icon: 'ri-rocket-line',
+     image: 'image/img4.jpg',
     category: 'Propulsion Systems',
     
     contentSections: [
@@ -175,7 +179,61 @@ const productData = {
         title: 'Advanced Propulsion Technology',
         content: 'Our Momentum propulsion system represents revolutionary advancement in space propulsion technology, featuring high-efficiency engines and innovative fuel management. With precision engineering and extensive testing, this system delivers exceptional performance for complex space missions.',
         type: 'content-image',
-        image: 'assets/img/bock_chain_img1.jpg'
+        image: 'image/img4.jpg'
+      },
+      {
+        title: 'Propulsion System Operations',
+        content: 'Discover how Momentum enables efficient orbital transfers and station-keeping through advanced propulsion technology. This comprehensive system provides variable thrust capabilities and fuel optimization for extended mission durations.',
+        type: 'content-video',
+        video: 'https://www.youtube.com/embed/wbSwFU6tY1c'
+      },
+      {
+        title: 'Engine Testing & Validation',
+        content: 'Watch comprehensive propulsion testing procedures and engine validation for Momentum. This detailed video demonstrates our rigorous engine testing protocols, thrust characterization, and performance validation for mission-critical applications.',
+        type: 'content-video',
+        video: 'https://www.youtube.com/embed/VBlIvghQTlI'
+      },
+      {
+        title: 'Propulsion Technical Manual',
+        content: 'Comprehensive technical specifications for Momentum propulsion system. Access detailed documentation covering engine performance characteristics, fuel systems, thrust vector control, and integration procedures for spacecraft applications.',
+        type: 'content-document',
+        document: 'assets/documents/momentum-propulsion-manual.pdf'
+      },
+      {
+        title: 'Mission Integration Guide',
+        content: 'Complete integration documentation for Momentum propulsion system including spacecraft integration procedures, fuel loading protocols, mission planning considerations, and operational procedures for various mission profiles.',
+        type: 'content-document',
+        document: 'assets/documents/momentum-integration-guide.pdf'
+      },
+      {
+        title: 'Propulsion Safety Protocols',
+        content: 'Comprehensive safety protocols for Momentum propulsion operations. Includes fuel handling procedures, engine safety systems, emergency shutdown protocols, and hazardous operations procedures for propulsion system operations.',
+        type: 'content-document',
+        document: 'assets/documents/momentum-safety-protocols.pdf'
+      },
+      {
+        title: 'Propulsion Innovation Leadership',
+        content: 'Momentum is revolutionizing space propulsion through advanced engine technology and fuel efficiency innovations. Our propulsion system enables cost-effective space missions, reducing fuel consumption while maximizing mission capability and operational flexibility.',
+        type: 'content-only'
+      }
+    ],
+
+  },
+
+  'orventus': {
+    name: 'Orventus',
+    subtitle: 'High-Performance Propulsion',
+    description: 'Advanced propulsion system designed for efficient orbital transfers, station-keeping, and interplanetary missions with innovative fuel management technology.',
+    icon: 'ri-rocket-line',
+     image: 'image/img4.jpg',
+    category: 'Propulsion Systems',
+    
+    contentSections: [
+      {
+        title: 'Advanced Propulsion Technology',
+        content: 'Our Momentum propulsion system represents revolutionary advancement in space propulsion technology, featuring high-efficiency engines and innovative fuel management. With precision engineering and extensive testing, this system delivers exceptional performance for complex space missions.',
+        type: 'content-image',
+        image: 'image/img4.jpg'
       },
       {
         title: 'Propulsion System Operations',
